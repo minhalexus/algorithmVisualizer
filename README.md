@@ -5,7 +5,7 @@ Click on one of the algorithm containers after clicking the demo link to see how
 
 
 # Application deployment link: 
-## https://algorithmvisualizer-b99af.web.app/
+ https://algorithmvisualizer-b99af.web.app/
 
 # How to run locally:
 1. Git clone project into local folder.
