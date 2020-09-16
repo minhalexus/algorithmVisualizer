@@ -3,7 +3,7 @@ import { Flipper, Flipped } from 'react-flip-toolkit';
 import './SmallToBig.css';
 import SortingPage from './SortingPage';
 import { CodeBlock, dracula } from "react-code-blocks";
-import { bubbleSortContent } from "./static_data";
+import { bubbleSortContent, selectionSortContent } from "./static_data";
 import CloseIcon from '@material-ui/icons/Close';
 
 
@@ -15,7 +15,7 @@ function SmallToBig({ sortType = "", ffullScreen=false }) {
   };
 
   const content = () => {
-    if (fullScreen) {
+    if (fullScreen && sortType.toLowerCase() == "bubble") {
       return (
         <div onClick={event => event.stopPropagation()} className="fullScreen_content">
           <SortingPage sortType={sortType} />
@@ -26,6 +26,19 @@ function SmallToBig({ sortType = "", ffullScreen=false }) {
             theme={dracula}
           />
 
+        </div>
+      )
+    }
+    if (fullScreen && sortType.toLowerCase() == "selection"){
+      return (
+        <div onClick={event => event.stopPropagation()} className="fullScreen_content">
+          <SortingPage sortType={sortType} />
+          <CodeBlock className="codeblock"
+            text={selectionSortContent}
+            language="javascript"
+            showLineNumbers={true}
+            theme={dracula}
+          />
         </div>
       )
     }

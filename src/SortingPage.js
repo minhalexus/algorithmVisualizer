@@ -11,10 +11,13 @@ function SortingPage({ sortType='selection' }) {
     const [completed, setCompleted] = useState([]);
     const [selected, setSelected] = useState([]);
     const [considered, setConsidered] = useState([]);
-    const shuffleList = (e) => {
-        e.stopPropagation();
-        setCompleted([]);
-        setData(shuffle(data));
+
+    const shuffleList = async (e) => {
+        for (let i = 0; i < 2; i++){
+            setData(shuffle(data));
+            await sleep(400);
+        }
+        
     };
 
     function sleep(ms) {
@@ -26,19 +29,32 @@ function SortingPage({ sortType='selection' }) {
         let tempArray = JSON.parse(JSON.stringify(data));
         console.log(tempArray);
 
+        setCompleted([]);
         for (let sortedElements = 0; sortedElements < tempArray.length; sortedElements++){
-            for (let i = 0; i < tempArray.length - sortedElements; i++){
+            for (let i = 0; i < tempArray.length - sortedElements -1; i++){
+                // if (i+1 > tempArray.length - sortedElements) continue;
+                setSelected([i, i+1]);
+                await sleep(350);
+
                 let considered = i+1;
                 if (tempArray[i] > tempArray[considered]){
                     let temp = tempArray[i];
                     tempArray[i] = tempArray[considered];
                     tempArray[considered] = temp;
+                    setData(JSON.parse(JSON.stringify(tempArray)));
                     // console.log(tempArray);
+                    await sleep(500);
+                    
                 }
             }
+            setSelected([]);
+            await sleep(100);
+            setCompleted(x => [...x, tempArray.length - sortedElements - 1]);
             // console.log(tempArray);
         }
-
+        setSelected([]);
+        await sleep(500);
+        setCompleted([]);
         console.log(tempArray);
     }
 
@@ -107,7 +123,7 @@ function SortingPage({ sortType='selection' }) {
     }
 
     function chooseSort(event){
-        if (sortType == 'Bubble'){
+        if (sortType.toLowerCase() == 'bubble'){
             bubbleSort(event);
         }
         else{
@@ -118,9 +134,12 @@ function SortingPage({ sortType='selection' }) {
     return (
         <div className="sortingPage">
             <Flipper flipKey={data.join('')}>
-                <div className="sortingPage__buttons">
-                    <Button variant="contained" color="default" onClick={chooseSort}>{sortType} Sort </Button>
-                    <Button variant="contained" color="secondary" onClick={shuffleList}>Shuffle</Button>
+                <div className="sortingPage__header">
+                    <h2 className="sortingPage__heading">{sortType} Sort</h2>
+                    <div className="sortingPage__buttons">
+                        <Button variant="contained" color="default" onClick={chooseSort}>{sortType} Sort </Button>
+                        <Button variant="contained" color="secondary" onClick={shuffleList}>Shuffle</Button>
+                    </div>
                 </div>
                 
                 <div className="sortingPage__list">

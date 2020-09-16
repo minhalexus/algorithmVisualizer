@@ -17,10 +17,13 @@ function App() {
   return (
     <div className="app">
       <div className="description">
-        <h2>Sorting Algorithms Visualizer</h2>
+        <h2>Sorting Algorithm Visualizer</h2>
         <div>
           <pre>
-            This project explores various animation techniques to visualize various algorithms.
+            This project explores animation techniques in ReactJS and CSS to visualize various algorithms.
+            <br />
+            Click on one of the algorithm containers below to check out how they work.
+            <br/>
             <br/>
             Check out the github page for source code.
           </pre>
@@ -35,6 +38,13 @@ function App() {
         <SmallToBig sortType="Selection" fullScreen={fullScreenSelectionSort} />
         <SmallToBig sortType="Bubble" fullScreen={fullScreenBubbleSort} />
       </div>
+
+      <div className="signature">
+        <p>Minhal Shanjer</p>
+        <hr/>
+        <img src ="https://uwaterloo.ca/brand/sites/ca.brand/files/universityofwaterloo_logo_horiz_rev_rgb.png" alt="UWaterloo CS" />
+      </div>
+      
       
     </div>
   );
