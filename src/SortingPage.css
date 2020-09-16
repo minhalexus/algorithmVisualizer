@@ -1,3 +1,7 @@
+/* .sortingPage{
+    margin-bottom: 20px;
+} */
+
 .sortingPage__list{
     display: flex;
 
@@ -43,4 +47,27 @@
     color: maroon;
     box-shadow: 5px 5px 10px grey;
     border: 4px solid yellow;  
+}
+
+.sortingPage__itemCompleted{
+    background-image: linear-gradient(to right, rgb(91, 219, 159), rgb(60, 235, 89));  
+    margin: 10px;
+    width: 80px;
+    height: 80px;
+    border-radius: 5px;
+    font-size: 58px;
+    display: flex;
+    justify-content: center;
+    color: maroon;
+    box-shadow: 5px 5px 10px grey;
+}
+
+.sortingPage__buttons{
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 20px;
+}
+
+.sortingPage__buttons > button{
+    margin-left: 10px;
 }

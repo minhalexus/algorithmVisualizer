@@ -2,42 +2,56 @@ import React, { useState } from 'react';
 import { Flipper, Flipped } from 'react-flip-toolkit';
 import './SmallToBig.css';
 import SortingPage from './SortingPage';
+import { CodeBlock, dracula } from "react-code-blocks";
+import { bubbleSortContent } from "./static_data";
+import CloseIcon from '@material-ui/icons/Close';
 
 
-function SmallToBig({ sortType="" }) {
-    const [fullScreen, setFullScreen] = useState(false);
-    const toggleFullScreen = (event) => {
-      event.stopPropagation();
-      setFullScreen(prevState => !prevState)
-    };
+function SmallToBig({ sortType = "", ffullScreen=false }) {
+  const [fullScreen, setFullScreen] = useState(false);
+  const toggleFullScreen = (event) => {
+    event.stopPropagation();
+    setFullScreen(prevState => !prevState)
+  };
 
-    const content = () => {
-      if (fullScreen){
-        return (
-          <SortingPage sortType={sortType} />
-        )
-      }
-      
+  const content = () => {
+    if (fullScreen) {
       return (
-        <span>{sortType} Sort</span>
+        <div onClick={event => event.stopPropagation()} className="fullScreen_content">
+          <SortingPage sortType={sortType} />
+          <CodeBlock className="codeblock"
+            text={bubbleSortContent}
+            language="javascript"
+            showLineNumbers={true}
+            theme={dracula}
+          />
+
+        </div>
       )
     }
-  
-  
+
     return (
-      <div className="SmallToBig">        
-        <Flipper flipKey={fullScreen}>
-          <Flipped flipId="square">
-            <div
-              className={fullScreen ? 'full-screen-square' : 'square'}
-              onClick={toggleFullScreen}
-            > {content()} </div>
-          </Flipped>
-        </Flipper>
-  
-      </div>
-    );
+      <span>{sortType} Sort</span>
+    )
   }
-  
-  export default SmallToBig;
-  
+
+
+  return (
+    <div className="SmallToBig">
+      <Flipper flipKey={fullScreen}>
+        <Flipped flipId="square">
+          <div
+            className={fullScreen ? 'full-screen-square' : 'square'}
+            onClick={toggleFullScreen}
+          > 
+          {fullScreen && (<CloseIcon className="closeIcon" fontSize="large" />)}
+          {content()} 
+          </div>
+        </Flipped>
+      </Flipper>
+
+    </div>
+  );
+}
+
+export default SmallToBig;

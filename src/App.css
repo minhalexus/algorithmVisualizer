@@ -1,6 +1,43 @@
+ *{
+  margin: 0px;
+}
+
 .app{
+  display: flex;
+  flex-direction: column; 
+  justify-content: center;
+  min-height: 100vh;
+  background-image: linear-gradient(
+    45deg,
+    rgb(231, 230, 252),
+    rgb(200, 196, 214)
+  );
+}
+
+.sortAlgos{
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  flex: 2;
+}
+
+.description{
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  align-items: center;
+  margin-top: 10vh;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.description > h2{
+  font-family: "Comic Sans MS", cursive, sans-serif;
+}
+
+.description pre{
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  font-size: 16px;
 }

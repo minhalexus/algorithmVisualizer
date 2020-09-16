@@ -2,15 +2,18 @@ import React, { useState } from 'react'
 import { Flipper, Flipped } from 'react-flip-toolkit'
 import shuffle from 'lodash.shuffle';
 import './SortingPage.css';
+import Button from '@material-ui/core/Button';
 
 
 
 function SortingPage({ sortType='selection' }) {
-    const [data, setData] = useState([25, 3, 1, 6, 7, 2, 16]);
+    const [data, setData] = useState([25, 3, 1, 5, 8, 2, 16]);
+    const [completed, setCompleted] = useState([]);
     const [selected, setSelected] = useState([]);
     const [considered, setConsidered] = useState([]);
     const shuffleList = (e) => {
         e.stopPropagation();
+        setCompleted([]);
         setData(shuffle(data));
     };
 
@@ -23,7 +26,6 @@ function SortingPage({ sortType='selection' }) {
         let tempArray = JSON.parse(JSON.stringify(data));
         console.log(tempArray);
 
-        
         for (let sortedElements = 0; sortedElements < tempArray.length; sortedElements++){
             for (let i = 0; i < tempArray.length - sortedElements; i++){
                 let considered = i+1;
@@ -45,12 +47,13 @@ function SortingPage({ sortType='selection' }) {
         // setData([ 3, 25, 1, 6, 7, 2, 16]);
 
         let tempArray = JSON.parse(JSON.stringify(data));
-        setSelected(0);
+        setCompleted([]);
+        setSelected([0]);
         for (let index = 0; index < tempArray.length; index++) {
-            setSelected(index);
+            setSelected([index]);
             await(sleep(250));
             for (let i = index; i < tempArray.length; i++) {
-                setConsidered(i);
+                setConsidered([i]);
                 await sleep(250);
                 if (tempArray[index] > tempArray[i]) {
                     let temp = tempArray[index];
@@ -62,15 +65,17 @@ function SortingPage({ sortType='selection' }) {
                 }
                 // console.log(data);
             }
+            setCompleted(oldArray => [...oldArray, index]);
         }
-        setSelected(-1);
-        setConsidered(-1);
+        setSelected([]);
+        setConsidered([]);
+        setCompleted([]);
         // setData(tempArray);
         // console.log(tempArray);
     }
 
     const handleBorder = (value, index) => {
-        if (selected == index) {
+        if (selected.includes(index)) {
             return (
                 <div onClick={e => e.stopPropagation()} className='sortingPage__itemSelected'>
                     {value}
@@ -78,9 +83,17 @@ function SortingPage({ sortType='selection' }) {
             )
         }
 
-        if (considered == index){
+        if (considered.includes(index)){
             return (
                 <div onClick={e => e.stopPropagation()} className='sortingPage__itemConsidered'>
+                    {value}
+                </div>
+            )
+        }
+
+        if (completed.includes(index)){
+            return (
+                <div className='sortingPage__itemCompleted'>
                     {value}
                 </div>
             )
@@ -105,8 +118,11 @@ function SortingPage({ sortType='selection' }) {
     return (
         <div className="sortingPage">
             <Flipper flipKey={data.join('')}>
-                <button onClick={chooseSort}>{sortType} Sort </button>
-                <button onClick={shuffleList}>Shuffle</button>
+                <div className="sortingPage__buttons">
+                    <Button variant="contained" color="default" onClick={chooseSort}>{sortType} Sort </Button>
+                    <Button variant="contained" color="secondary" onClick={shuffleList}>Shuffle</Button>
+                </div>
+                
                 <div className="sortingPage__list">
                     {data.map((currElement, index) => (
                         <Flipped key={currElement} flipId={currElement}>
