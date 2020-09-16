@@ -1,0 +1,48 @@
+.SmallToBig{
+  margin: 10px;
+}
+
+.square {
+  width: 200px;
+  height: 200px;
+  background-image: linear-gradient(
+    45deg,
+    rgb(121, 113, 234),
+    rgb(97, 71, 182)
+  );
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 22px;
+  border-radius: 15px;
+  box-shadow: 3px 3px 10px black;
+  cursor: pointer;
+}
+  
+.full-screen-square {
+  position: fixed;
+  top: 10vh;
+  left: 10vw;
+  right: 10vw;
+  down: 10vh;
+  /* top: 0;
+  left: 0; */
+  margin: 0 auto;
+  width: 75vw;
+  height: 85vh;
+  background-image: linear-gradient(
+    45deg,
+    rgb(121, 113, 234),
+    rgb(97, 71, 182)
+  );
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 30px;
+}
+
+.full-screen-square:hover{
+  cursor: initial;
+}
+  

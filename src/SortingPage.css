@@ -1,0 +1,46 @@
+.sortingPage__list{
+    display: flex;
+
+}
+
+.sortingPage__item{
+    background-image: linear-gradient(to right, rgb(186, 229, 236), rgb(30, 243, 243));  
+    border: 1px solid gray;  
+    margin: 10px;
+    width: 80px;
+    height: 80px;
+    border-radius: 5px;
+    font-size: 58px;
+    display: flex;
+    justify-content: center;
+    color: maroon;
+    box-shadow: 5px 5px 10px grey;
+}
+
+.sortingPage__itemSelected{
+    background-image: linear-gradient(to right, rgb(186, 229, 236), rgb(30, 243, 243));  
+    margin: 10px;
+    width: 80px;
+    height: 80px;
+    border-radius: 5px;
+    font-size: 58px;
+    display: flex;
+    justify-content: center;
+    color: maroon;
+    box-shadow: 5px 5px 10px grey;
+    border: 6px solid rgb(228, 88, 88);  
+}
+
+.sortingPage__itemConsidered{
+    background-image: linear-gradient(to right, rgb(186, 229, 236), rgb(30, 243, 243));  
+    margin: 10px;
+    width: 80px;
+    height: 80px;
+    border-radius: 5px;
+    font-size: 58px;
+    display: flex;
+    justify-content: center;
+    color: maroon;
+    box-shadow: 5px 5px 10px grey;
+    border: 4px solid yellow;  
+}
