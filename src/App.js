@@ -19,14 +19,14 @@ function App() {
       <div className="description">
         <h2>Sorting Algorithm Visualizer</h2>
         <div>
-          <pre>
+          <p>
             This project explores animation techniques in ReactJS and CSS to visualize various algorithms.
             <br />
             Click on one of the algorithm containers below to check out how they work.
             <br/>
             <br/>
             Check out the github page for source code.
-          </pre>
+          </p>
         </div>
         <Button variant="contained" 
           color="primary" 

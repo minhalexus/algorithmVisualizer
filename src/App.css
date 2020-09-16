@@ -29,17 +29,21 @@
   margin-top: 10vh;
   margin-right: auto;
   margin-left: auto;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 .description > h2{
   font-family: "Comic Sans MS", cursive, sans-serif;
 }
 
-.description pre{
+.description p{
   margin-top: 20px;
   margin-bottom: 20px;
   font-family: "Comic Sans MS", cursive, sans-serif;
   font-size: 16px;
+  word-wrap: break-word;
+  
 }
 
 .signature{
