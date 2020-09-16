@@ -135,11 +135,13 @@ function SortingPage({ sortType='selection' }) {
         <div className="sortingPage">
             <Flipper flipKey={data.join('')}>
                 <div className="sortingPage__header">
+
                     <h2 className="sortingPage__heading">{sortType} Sort</h2>
                     <div className="sortingPage__buttons">
                         <Button variant="contained" color="default" onClick={chooseSort}>{sortType} Sort </Button>
                         <Button variant="contained" color="secondary" onClick={shuffleList}>Shuffle</Button>
                     </div>
+                    
                 </div>
                 
                 <div className="sortingPage__list">
